@@ -11,6 +11,25 @@
 def merge_sort(lst):
     """Divide and conquer: reduce to lists of 0-1 items, then recombine."""
 
+    if len(lst) < 2:
+        return lst
+        
+    left = []
+    right = []
+    mid_el = int(len(lst)/2)
+    pivot = lst[mid_el]
+    center = []
+
+    for el in lst:
+        if el < pivot:
+            left.append(el)
+        elif el > pivot:
+            right.append(el)
+        else:
+            center.append(el)    
+ 
+    return merge_sort(left) + center + merge_sort(right)           
+
 if __name__ == '__main__':
     import doctest
     if doctest.testmod().failed == 0:
